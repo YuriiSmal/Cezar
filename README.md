@@ -3,7 +3,7 @@
 ## Features
 
 - CLI and GUI support
-- Encrypt / Decrypt using Caesar Cipher
+- Encrypt / Decrypt using Cezar Cipher
 - Brute-force decryption with optional frequency analysis
 - Auto-detects alphabet (Ukrainian or English)
 - Java 23, Gradle project structure

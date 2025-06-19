@@ -12,7 +12,7 @@ import static com.cezar.utils.FileUtils.read;
 public class CezarUI extends JFrame {
 
     public CezarUI() {
-        setTitle("Caesar Cipher");
+        setTitle("Cezar Cipher");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
