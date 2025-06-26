@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CezarUtilsTest {
 
     @Test
+    void failTest() {
+        assertTrue(false);
+    }
+
+    @Test
     void testEncryptAndDecryptEnglish() {
         String original = "hello, world!";
         int key = 6;
