@@ -11,26 +11,36 @@ public class CLI {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("Enter command (ENCRYPT/DECRYPT/BRUTE_FORCE/EXIT): ");
+            System.out.print("Enter one of the next commands:  ENCRYPT | DECRYPT | BRUTE_FORCE | EXIT ");
             String command = scanner.nextLine().trim();
             if (command.equalsIgnoreCase("EXIT")) break;
 
-            System.out.print("Enter file path: ");
+            System.out.print("Enter the source file path: ");
             String path = scanner.nextLine().trim();
 
+            String source;
+            try {
+                source = FileUtils.read(Path.of(path));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             if (command.equalsIgnoreCase("BRUTE_FORCE")) {
-                System.out.print("Enter reference file path or leave empty: ");
-                String ref = scanner.nextLine().trim();
-                String toDecrypt;
+                System.out.print("Enter reference file path or leave empty for default BRUTE_FORCE action: ");
+                String refPath = scanner.nextLine().trim();
+
+                String referenceFileText = "";
                 try {
-                    toDecrypt = FileUtils.read(Path.of(path));
+                    referenceFileText = FileUtils.read(Path.of(refPath));
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println(e.getMessage());
+                    System.out.println("Will continue with default BRUTE_FORCE flow: ");
                 }
-                if (ref.isEmpty()) {
-                    CezarUtils.bruteForce(toDecrypt);
+
+                if (referenceFileText.isEmpty()) {
+                    CezarUtils.bruteForce(source);
                 } else {
-                    CezarUtils.bruteForce(toDecrypt, ref);
+                    CezarUtils.bruteForce(source, refPath);
                 }
 
             } else {
@@ -43,7 +53,7 @@ public class CLI {
             }
 
             System.out.print("Do you wanna continue? Type Yes or No ...");
-            if (scanner.nextLine().trim().equalsIgnoreCase("yes")) {
+            if (scanner.nextLine().trim().equalsIgnoreCase("no")) {
                 break;
             }
         }

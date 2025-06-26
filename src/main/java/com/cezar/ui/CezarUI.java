@@ -24,16 +24,16 @@ public class CezarUI extends JFrame {
         JButton brute = new JButton("Brute");
 
         encryptBtn.addActionListener(e -> {
-            String text = input.getText().trim();
-            String keyText = keyField.getText().trim();
+            String text = input.getText();
+            String keyText = keyField.getText();
 
             if (text.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Поле вводу тексту не може бути порожнім", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Input field can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             if (keyText.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Поле ключа не може бути порожнім", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Key field can't be empty", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -41,21 +41,21 @@ public class CezarUI extends JFrame {
                 int key = Integer.parseInt(keyText);
                 output.setText(CezarUtils.encrypt(text, key));
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Ключ має бути цілим числом", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Key must be an Integer", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
         decryptBtn.addActionListener(e -> {
-            String text = input.getText().trim();
-            String keyText = keyField.getText().trim();
+            String text = input.getText();
+            String keyText = keyField.getText();
 
             if (text.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Поле вводу тексту не може бути порожнім", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Input field can't be empty!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             if (keyText.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Поле ключа не може бути порожнім", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Key field can't be empty", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -63,7 +63,7 @@ public class CezarUI extends JFrame {
                 int key = Integer.parseInt(keyText);
                 output.setText(CezarUtils.decrypt(text, key));
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Ключ має бути цілим числом", "Помилка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Key must be an Integer", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
