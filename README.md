@@ -8,7 +8,7 @@
 - Auto-detects alphabet (Ukrainian or English)
 - Java 23, Gradle project structure
 
-## Usage (CLI)
+## Usage as command line: 
 ```bash
 java -jar CezarApp.jar ENCRYPT "path/to/file.txt" 5
 java -jar CezarApp.jar DECRYPT "path/to/file.txt" 5
